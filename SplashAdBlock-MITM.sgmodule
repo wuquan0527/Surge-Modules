@@ -1,0 +1,157 @@
+#!name=去开屏广告(MITM增强版)
+#!desc=针对 70+ 常用 App 的开屏广告接口做 URL 重写拦截。需要开启 MITM 并信任证书后生效,建议与「去开屏广告(SDK拦截版)」配合使用。
+#!author=wuquan0527
+#!homepage=https://github.com/wuquan0527/Surge-Modules
+#!system=ios
+#!date=2026-09-02
+#!category=广告拦截
+#!tag=开屏广告,去广告,MITM
+#!version=1.0.0
+
+[URL Rewrite]
+# > 淘宝
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv\/ - reject-200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.cbu\.app\.homepage\.startup - reject-200
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get - reject-200
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.fc\.resource\.tacdata\.get - reject-200
+# > 天猫精灵
+^https?:\/\/zconfig\.alibabausercontent\.com\/zconfig - reject-200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.aicloud\.splash - reject-200
+# > 闲鱼
+^https?:\/\/acs\.m\.goofish\.com\/gw\/mtop.*splash\.ads - reject-200
+# > 大麦
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.wireless\.home\.welcome - reject-200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.mec\.popup\.get - reject-200
+# > 盒马
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.wdk\.render\.querysinglepage - reject-200
+^https?:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querysinglepage - reject-200
+# > 京东
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(start|queryMaterialAdverts) - reject-200
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject-200
+# > 京东金融
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/(new)?na\/m\/getLoadingPicture - reject-200
+# > 京东快递
+^https?:\/\/lop-proxy\.jd\.com\/queryAppHomePageMarketingRecommendRuleConfigInfo - reject-200
+# > 京东读书
+^https?:\/\/jdread-api\.jd\.com\/jdread\/api\/channel\/module\/opens - reject-200
+^https?:\/\/jdread-api\.jd\.com\/jdread\/api\/popup - reject-200
+# > 京东小家
+^https?:\/\/api\.smart\.jd\.com\/c\/service\/getLoadingLinks - reject-200
+# > 京东云
+^https:\/\/router-app-api\.jdcloud\.com\/v\d\/board\/routerAppSplash - reject-200
+# > 拼多多
+^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash - reject-200
+# > 转转
+^https?:\/\/app\.zhuanzhuan\.com\/zzx\/transfer\/getConfigInfo - reject-200
+# > 得物
+^https:\/\/app\.dewu\.com\/api\/v1\/app\/advertisement\/ - reject-200
+# > 唯品会
+^https?:\/\/mapi\.appvipshop\.com\/vips-mobile\/rest\/activity\/advertisement\/get - reject-200
+^https:\/\/mapi\.appvipshop\.com\/vips-mobile\/rest\/iosAdInfo\/report - reject-200
+# > 当当
+^https?:\/\/api\.dangdang\.com\/mapi\d\/mobile\/init - reject-200
+# > 美团
+^https?:\/\/peisongapi\.meituan\.com\/client\/getInitiateImage - reject-200
+^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/\w+\.(gif|jpg|jpg\.webp)$ - reject-200
+^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/\w+\.(gif|jpg|mp4) - reject-200
+^https?:\/\/p\d\.meituan\.net\/(bizad|wmbanner)\/\w+\.jpg - reject-200
+^https?:\/\/p\d\.meituan\.net\/movie\/\w+\.jpg\?may_covertWebp - reject-200
+# > 美团外卖
+^https?:\/\/img\.meituan\.net\/(bizad|brandCpt)\/\w+\.(png|jpg) - reject-200
+^https?:\/\/.*\.meituan\.com\/api\/v\d\/(openscreen\?ad|appstatus\?ad|loadInfo\?|startpicture) - reject-200
+# > 饿了么
+^https?:\/\/elemecdn\.com\/.+\/sitemap - reject-200
+^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/640\/h\/\d{3,4} - reject-200
+^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/750\/h\/\d{3,4} - reject-200
+^https?:\/\/fuss10\.elemecdn\.com\/.+.mp4 - reject-200
+# > 滴滴出行
+https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget - reject-200
+https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNotices) - reject-200
+# > 嘀嗒出行
+^https?:\/\/capis.*didapinche\.com\/ad\/cx\/startup - reject-200
+# > 携程
+^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif - reject-200
+# > 去哪儿
+https:\/\/homefront\.qunar\.com\/front\/splash\/ad - reject-200
+^https?:\/\/client\.qunar\.com\/pitcher-proxy\?qrt=p_splashAd - reject-200
+# > 同程旅行
+^https?:\/\/tcmobileapi\.17usoft\.com\/appindexnew\/index\/getappindexconfig - reject-200
+# > 交管12123
+^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery - reject-200
+# > 航旅纵横
+^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject-200
+# > 马蜂窝
+^https:\/\/mapi\.mafengwo\.cn\/ad\/get_launch_ad_list\/v2 - reject-200
+# > 途牛
+^https?:\/\/m\.tuniu\.com\/api\/operation\/splash\/ - reject-200
+# > 途家民宿
+^https?:\/\/client\.tujia\.com\/bnbapp-node\/app\/portal\/getStartPictureAdvertising - reject-200
+# > 腾讯新闻
+^https?:\/\/r\.inews\.qq\.com\/(adsBlacklist|getFullScreenPic|getQQNewsRemoteConfig) - reject-200
+^https?:\/\/r\.inews\.qq\.com\/(getBannerAds|getNewsRemoteConfig|getSplash|searchHotCatList|upLoadLoc) - reject-200
+# > 澎湃新闻
+^https?:\/\/adpai\.thepaper\.cn\/.+&ad= - reject-200
+# > 财联社
+^https?:\/\/api3\.cls\.cn\/v1\/boot\/ad - reject-200
+# > 东方财富
+^https?:\/\/emdcadvertise\.eastmoney\.com\/infoService\/v\d - reject-200
+^https?:\/\/[a-z]+\.eastmoney\.com\/infoService\/ - reject-200
+^https?:\/\/emdcadvise\.eastmoney\.com\/infoAdviseService\/ - reject-200
+# > 雪球
+^https?:\/\/api\.xueqiu\.com\/snowpard\/launch_strategy\/query\.json - reject-200
+# > 新浪财经
+^https?:\/\/ad\.cj\.sina\.cn\/(osa\/adpreload|fax\/impress) - reject-200
+# > CSDN
+^https?:\/\/app-gw\.csdn\.net\/silkroad-api\/api\/v\d\/assemble\/list\/pub\/channel\/app_open_screen_ad - reject-200
+# > 豆瓣
+^https?:\/\/api\.douban\.com\/v2\/app_ads\/splash - reject-200
+^https?:\/\/api\.douban\.com\/b.*\/common_ads\?.* - reject-200
+# > AcFun
+^https?:\/\/api-new\.app\.acfun\.cn\/rest\/app\/flash\/screen\/ - reject-200
+# > 斗鱼
+^https?:\/\/rtbapi\.douyucdn\.cn\/japi\/sign\/app\/getinfo - reject-200
+# > 虎牙直播
+^https?:\/\/business\.msstatic\.com\/advertiser\/material - reject-200
+# > 咪咕音乐
+^https?:\/\/app\.c\.nf\.migu\.cn\/.*column\/start(-)?up-pic - reject-200
+# > 咪咕视频爱看
+^https?:\/\/aikanvod\.miguvideo\.com\/video\/p\/i_adverseInterface\.jsp - reject-200
+# > 百度贴吧
+^https?:\/\/tiebac\.baidu\.com\/c\/f\/ad\/getFeedAd - reject-200
+# > 百度翻译
+^https?:\/\/mime\.baidu\.com\/v\d\/IosStart\/getStartInfo - reject-200
+^https?:\/\/mime\.baidu\.com\/v\d\/activity\/advertisement - reject-200
+# > 百度网盘
+^https?:\/\/pan\.baidu\.com\/act\/v\d\/(bchannel|welfare)\/list - reject-200
+^https?:\/\/pan\.baidu\.com\/rest\/2\.0\/pcs\/ad - reject-200
+^https?:\/\/pan\.baidu\.com\/act\/api\/activityentry - reject-200
+# > 百度输入法
+^https?:\/\/mobads\.baidu\.com\/cpro\/ui\/mads\.php - reject-200
+# > 123云盘
+^https?:\/\/sdk\.1rtb\.net\/sdk\/req_ad - reject-200
+# > Keep
+^https?:\/\/hc-ssp\.sm\.cn - reject-200
+# > Lofter
+^https?:\/\/ad\.lofter\.com\/.*yitou\/madr - reject-200
+# > 米游社
+^https?:\/\/bbs-api\.miyoushe\.com\/apihub\/api\/getAppSplash - reject-200
+# > 小黑盒
+^https?:\/\/api\.xiaoheihe\.cn\/.*get_ads_info - reject-200
+# > 富途牛牛
+^https?:\/\/api\.futunn\.com\/(v\d\/)?ad\/ - reject-200
+# > 中国移动
+^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit - reject-200
+# > 中国移动云盘
+^https?:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/adv-filter\/AdInfoFilter\/getAdInfos$ - reject-200
+# > 中国联通
+^https?:\/\/m\.client\.10010\.com\/mobileService\/(activity|customer)\/(accountListData|get_client_adv|get_startadv) - reject-200
+^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/(getHomePageAd|getWelcomeAd) - reject-200
+# > 人民日报
+^https:\/\/app\.peopleapp\.com\/Api\/\d+\/HomeApi\/(adv|getAdvertImage) - reject-200
+^https?:\/\/stat\.peopleapp\.com\/ - reject-200
+# > 央视频
+^https?:\/\/cdn\.cmgadx\.com\/sdk\/pool\/\w+\.json - reject-200
+
+[MITM]
+hostname = %APPEND% acs.m.taobao.com, guide-acs.m.taobao.com, zconfig.alibabausercontent.com, acs.m.goofish.com, acs-m.freshippo.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, lop-proxy.jd.com, jdread-api.jd.com, api.smart.jd.com, router-app-api.jdcloud.com, api.pinduoduo.com, api.yangkeduo.com, app.zhuanzhuan.com, app.dewu.com, mapi.appvipshop.com, api.dangdang.com, peisongapi.meituan.com, img.meituan.net, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, *.meituan.com, elemecdn.com, fuss10.elemecdn.com, res.xiaojukeji.com, capis*.didapinche.com, ma-adx.ctrip.com, homefront.qunar.com, client.qunar.com, tcmobileapi.17usoft.com, gab.122.gov.cn, *.umetrip.com, mapi.mafengwo.cn, m.tuniu.com, client.tujia.com, r.inews.qq.com, adpai.thepaper.cn, api3.cls.cn, emdcadvertise.eastmoney.com, emdcadvise.eastmoney.com, *.eastmoney.com, api.xueqiu.com, ad.cj.sina.cn, app-gw.csdn.net, api.douban.com, api-new.app.acfun.cn, rtbapi.douyucdn.cn, business.msstatic.com, app.c.nf.migu.cn, aikanvod.miguvideo.com, tiebac.baidu.com, mime.baidu.com, pan.baidu.com, mobads.baidu.com, sdk.1rtb.net, hc-ssp.sm.cn, ad.lofter.com, bbs-api.miyoushe.com, api.xiaoheihe.cn, api.futunn.com, client.app.coc.10086.cn, ad.mcloud.139.com, m.client.10010.com, app.peopleapp.com, stat.peopleapp.com, cdn.cmgadx.com
+h2 = true
