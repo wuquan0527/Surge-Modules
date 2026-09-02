@@ -91,6 +91,19 @@ DOMAIN-SUFFIX,chartboost.com,REJECT
 DOMAIN-SUFFIX,appsflyer.com,REJECT
 
 # ============================================================
+# 网易云音乐(广告素材/HTTPDNS 域名,无需 MITM)
+# ============================================================
+DOMAIN,ipv4.music.163.com,REJECT
+DOMAIN,ipv6.music.163.com,REJECT
+DOMAIN,iadmat.nosdn.127.net,REJECT
+DOMAIN,iadmatapk.nosdn.127.net,REJECT
+DOMAIN,admusicpic.music.126.net,REJECT
+DOMAIN-SUFFIX,163jiasu.com,REJECT
+DOMAIN-SUFFIX,httpdns.music.163.com,REJECT
+DOMAIN-SUFFIX,iadmusicmatvideo.music.126.net,REJECT
+DOMAIN-SUFFIX,iadmusicmat.music.126.net,REJECT
+
+# ============================================================
 # HTTPDNS 拦截(防止 App 用 HTTPDNS 绕过域名拦截)
 # ============================================================
 DOMAIN,httpdns.n.netease.com,REJECT
