@@ -1,0 +1,104 @@
+#!name=去开屏广告(SDK拦截版)
+#!desc=拦截国内主流广告SDK(穿山甲/优量汇/百青藤/快手联盟等)域名,从源头阻断开屏广告下发。无需MITM,开启即生效。部分App需杀掉重开或清除缓存后生效。
+#!author=wuquan0527
+#!homepage=https://github.com/wuquan0527/Surge-Modules
+#!system=ios
+#!date=2026-09-02
+#!category=广告拦截
+#!tag=开屏广告,去广告,SDK拦截
+#!version=1.0.0
+
+[Rule]
+# ============================================================
+# 穿山甲 Pangle(字节跳动系,国内开屏广告第一大来源)
+# 精细化 AND 规则:只拦广告素材/接口,不误伤正常业务
+# ============================================================
+AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com)),REJECT
+AND,((DOMAIN-KEYWORD,-ttam-),(DOMAIN-SUFFIX,ibyteimg.com)),REJECT
+AND,((DOMAIN-KEYWORD,ssdk-),(DOMAIN-SUFFIX,pangle.io)),REJECT
+AND,((DOMAIN-KEYWORD,pangolin),(DOMAIN-SUFFIX,sgsnssdk.com)),REJECT
+AND,((DOMAIN-KEYWORD,lf),(DOMAIN-KEYWORD,-short.bytetos.com)),REJECT
+AND,((DOMAIN-KEYWORD,ads),(DOMAIN-KEYWORD,normal),(DOMAIN-SUFFIX,zijieapi.com)),REJECT
+AND,((DOMAIN-KEYWORD,api),(DOMAIN-KEYWORD,-access-),(DOMAIN-SUFFIX,pangle.io)),REJECT
+AND,((DOMAIN-KEYWORD,api),(DOMAIN-KEYWORD,-log-),(DOMAIN-SUFFIX,pangle.io)),REJECT
+AND,((DOMAIN-KEYWORD,api),(DOMAIN-KEYWORD,-dual-event-),(DOMAIN-SUFFIX,pangle.io)),REJECT
+DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT
+DOMAIN-SUFFIX,ibytedtos.com,REJECT
+DOMAIN-SUFFIX,bytescm.com,REJECT
+DOMAIN-SUFFIX,ttcdn-tos.pstatp.com,REJECT
+DOMAIN-SUFFIX,oceanengine.com,REJECT
+DOMAIN-SUFFIX,i18n-pglstatp.com,REJECT
+
+# ============================================================
+# 优量汇 GDT(腾讯广告)
+# ============================================================
+DOMAIN-SUFFIX,gdt.qq.com,REJECT
+DOMAIN-SUFFIX,ugdtimg.com,REJECT
+DOMAIN-SUFFIX,gdtimg.com,REJECT
+DOMAIN-SUFFIX,adsmind.qq.com,REJECT
+DOMAIN-SUFFIX,admind.qq.com,REJECT
+DOMAIN-SUFFIX,qqads.com,REJECT
+
+# ============================================================
+# 百青藤/百度广告联盟
+# ============================================================
+DOMAIN-SUFFIX,mobads.baidu.com,REJECT
+DOMAIN-SUFFIX,cpro.baidu.com,REJECT
+DOMAIN-SUFFIX,pos.baidu.com,REJECT
+DOMAIN-SUFFIX,mbd.baidu.com,REJECT
+DOMAIN-SUFFIX,afd.baidu.com,REJECT
+DOMAIN-SUFFIX,union.baidu.com,REJECT
+
+# ============================================================
+# 快手联盟
+# ============================================================
+DOMAIN,api.kmovie.gifshow.com,REJECT
+DOMAIN,open.e.kuaishou.com,REJECT
+
+# ============================================================
+# 其他国内 SSP/广告平台
+# ============================================================
+DOMAIN-SUFFIX,youmi.net,REJECT
+DOMAIN-SUFFIX,mintegral.com,REJECT
+DOMAIN-SUFFIX,mobvista.com,REJECT
+DOMAIN-SUFFIX,anythinktech.com,REJECT
+DOMAIN-SUFFIX,toponad.com,REJECT
+DOMAIN-SUFFIX,domob.cn,REJECT
+DOMAIN-SUFFIX,1rtb.net,REJECT
+DOMAIN-SUFFIX,qinlinad.com,REJECT
+DOMAIN,hc-ssp.sm.cn,REJECT
+DOMAIN,ssp.dzh.com.cn,REJECT
+DOMAIN-SUFFIX,tanx.com,REJECT
+DOMAIN-SUFFIX,mmstat.com,REJECT
+DOMAIN-SUFFIX,umeng.com,REJECT
+DOMAIN-SUFFIX,cnzz.com,REJECT
+
+# ============================================================
+# 国际广告 SDK(海外 App)
+# ============================================================
+DOMAIN-SUFFIX,admob.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,applovin.com,REJECT
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+DOMAIN-SUFFIX,ironsrc.com,REJECT
+DOMAIN-SUFFIX,inmobi.com,REJECT
+DOMAIN-SUFFIX,adcolony.com,REJECT
+DOMAIN-SUFFIX,vungle.com,REJECT
+DOMAIN-SUFFIX,chartboost.com,REJECT
+DOMAIN-SUFFIX,appsflyer.com,REJECT
+
+# ============================================================
+# HTTPDNS 拦截(防止 App 用 HTTPDNS 绕过域名拦截)
+# ============================================================
+DOMAIN,httpdns.n.netease.com,REJECT
+DOMAIN,httpdns.calorietech.com,REJECT
+DOMAIN,httpdns.m.taobao.com,REJECT
+
+# ============================================================
+# 可选:全量广告黑名单兜底(依赖 jsDelivr CDN)
+# 需要更全面的广告拦截时可取消注释;如 CDN 不稳定可自行删除
+# ============================================================
+# RULE-SET,https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Surge/Advertising/Advertising.list,REJECT,no-resolve
